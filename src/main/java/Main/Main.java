@@ -3,7 +3,10 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+        ConnexionBDD connexionBDD= new ConnexionBDD();
+
         List<Joueur> lesJoueurs = new ArrayList<>();
+
         lesJoueurs.add(new Joueur("Dupont", "Pierre", 10, new Poste(4)));
         lesJoueurs.add(new Joueur("Lefevre", "Paul", 7, new Poste(4)));
         lesJoueurs.add(new Joueur("Martinez", "Carlos", 5, new Poste(2)));
@@ -106,5 +109,6 @@ public class Main {
         lesJoueurs.add(new Joueur("Guerra", "Ricardo", 4, new Poste(3)));
         lesJoueurs.add(new Joueur("El Belaili", "Ismael", 10, new Poste(4)));
 
+        connexionBDD.ajouterJoueur(lesJoueurs.get(0));
     }
 }
