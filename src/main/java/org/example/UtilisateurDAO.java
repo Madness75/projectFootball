@@ -63,4 +63,39 @@ public class UtilisateurDAO {
         }
         return isValid;
     }
+
+    public boolean inscrireUtilisateur(String email, String nom, String prenom, String motdepasse) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        boolean isSuccess = false;
+
+        try {
+            // Connexion à la base de données
+            con = DriverManager.getConnection(URL, LOGIN, PASS);
+
+            // Requête d'insertion pour ajouter l'utilisateur dans la base
+            String sql = "INSERT INTO Utilisateur (email, nom, prenom, motdepasse) VALUES (?, ?, ?, ?)";
+            ps = con.prepareStatement(sql);
+            ps.setString(1, email);
+            ps.setString(2, nom);
+            ps.setString(3, prenom);
+            ps.setString(4, motdepasse);
+
+            // Exécution de la requête
+            int result = ps.executeUpdate();
+
+            // Si l'insertion est réussie, result sera supérieur à 0
+            if (result > 0) {
+                isSuccess = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try { if (ps != null) ps.close(); } catch (Exception e) { e.printStackTrace(); }
+            try { if (con != null) con.close(); } catch (Exception e) { e.printStackTrace(); }
+        }
+
+        return isSuccess;
+    }
+
 }

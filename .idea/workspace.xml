@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="527da18e-54bc-4a59-a596-963a6148cf5c" name="Changes" comment="ajout de la classe login">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/UtilisateurDAO.java" afterDir="false" />
+    <list default="true" id="527da18e-54bc-4a59-a596-963a6148cf5c" name="Changes" comment="added login fonctionnel">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Inscription.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UtilisateurDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UtilisateurDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,23 +36,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Login.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MonInterface.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TeamManagementUI.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;U:/Agile/projectFootball/projectFootball/src/main/mysql-connector-j-8.0.31.jar&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;U:/agile_methodology/ProjetFootball/src/main/java/org/example/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Inscription.executor": "Run",
+    "Application.Login.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.MonInterface.executor": "Run",
+    "Application.TeamManagementUI.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "U:/Agile/projectFootball/projectFootball/src/main/mysql-connector-j-8.0.31.jar",
+    "onboarding.tips.debug.path": "U:/agile_methodology/ProjetFootball/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
-  <component name="RunManager">
+}]]></component>
+  <component name="RunManager" selected="Application.Inscription">
+    <configuration name="Inscription" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.Inscription" />
+      <module name="ProjetFootball" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Login" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Login" />
       <module name="ProjetFootball" />
@@ -65,8 +81,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TeamManagementUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.TeamManagementUI" />
+      <module name="ProjetFootball" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Inscription" />
+        <item itemvalue="Application.TeamManagementUI" />
         <item itemvalue="Application.Login" />
       </list>
     </recent_temporary>
@@ -96,7 +127,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738944835736</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added login fonctionnel">
+      <option name="closed" value="true" />
+      <created>1739195917114</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1739195917114</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -113,7 +152,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
     <MESSAGE value="ajout de la classe login" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajout de la classe login" />
+    <MESSAGE value="added login fonctionnel" />
+    <option name="LAST_COMMIT_MESSAGE" value="added login fonctionnel" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
