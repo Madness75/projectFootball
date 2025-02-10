@@ -10,14 +10,19 @@ public class Poste {
         switch (idPoste){
             case 1:
                 pos= "GK";
+                break;
             case 2:
                 pos= "DEF";
+                break;
             case 3:
                 pos= "MIL";
+                break;
             case 4:
                 pos= "ATT";
+                break;
             default:
                 pos="null";
+                break;
         }
     }
 

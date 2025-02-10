@@ -8,7 +8,7 @@ public class Joueur {
     private Poste poste;
 
 
-    public Joueur(String nom, Poste poste, int numMaillot, String prenom) {
+    public Joueur(String nom,String prenom , int numMaillot, Poste poste) {
         this.nom = nom;
         this.poste = poste;
         this.numMaillot = numMaillot;

@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="527da18e-54bc-4a59-a596-963a6148cf5c" name="Changes" comment="ajout de la classe login">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/MatchSchedulerUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/TeamManagementUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Joueur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Poste.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Poste.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,9 +25,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2sifOsVREjuHMJrJUbDQjq5aqcq" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -44,7 +45,11 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "onboarding.tips.debug.path": "U:/agile_methodology/ProjetFootball/src/main/java/org/example/Main.java"
+    "last_opened_file_path": "U:/Agile/projectFootball/projectFootball/src/main/mysql-connector-j-8.0.31.jar",
+    "onboarding.tips.debug.path": "U:/agile_methodology/ProjetFootball/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

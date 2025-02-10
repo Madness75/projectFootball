@@ -1,3 +1,5 @@
+package Main;
+
 import Model.*;
 import java.util.*;
 
@@ -110,5 +112,6 @@ public class Main {
         lesJoueurs.add(new Joueur("El Belaili", "Ismael", 10, new Poste(4)));
 
         connexionBDD.ajouterJoueur(lesJoueurs.get(0));
+
     }
 }
