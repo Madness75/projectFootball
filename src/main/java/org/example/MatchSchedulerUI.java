@@ -14,8 +14,8 @@ public class MatchSchedulerUI extends JFrame {
     private JTextField teamInput;
     private JTextField matchTimeInput;
     private YearMonth currentMonth;
-    private Map<Integer, Map<String, String>> scheduledMatches; // Stocke les matchs programmés (jour -> {horaire -> match info})
     private static String currentUserEmail; // Stocke l'email de l'utilisateur actuel
+    private static Map<YearMonth, Map<Integer, Map<String, String>>> allScheduledMatches; // Stocke les matchs de tous les mois
 
     // Constructeur
     public MatchSchedulerUI(String userEmail) {
@@ -27,7 +27,9 @@ public class MatchSchedulerUI extends JFrame {
         setLayout(new BorderLayout());
 
         currentMonth = YearMonth.now();
-        scheduledMatches = new HashMap<>();
+        if (allScheduledMatches == null) {
+            allScheduledMatches = new HashMap<>();
+        }
 
         // Titre de la fenêtre
         JLabel titleLabel = new JLabel("Gestion des matchs", SwingConstants.CENTER);
@@ -103,14 +105,21 @@ public class MatchSchedulerUI extends JFrame {
             calendarPanel.add(new JLabel(""));
         }
 
+        // Vérifier si des matchs ont été programmés pour ce mois
+        Map<Integer, Map<String, String>> currentMonthMatches = allScheduledMatches.get(currentMonth);
+        if (currentMonthMatches == null) {
+            currentMonthMatches = new HashMap<>();
+            allScheduledMatches.put(currentMonth, currentMonthMatches);
+        }
+
         for (int day = 1; day <= totalDays; day++) {
             JButton dayButton = new JButton(String.valueOf(day));
             int finalDay = day;
 
             // Afficher les informations sur les matchs déjà programmés
-            if (scheduledMatches.containsKey(day)) {
+            if (currentMonthMatches.containsKey(day)) {
                 StringBuilder matchInfo = new StringBuilder();
-                Map<String, String> matchesForDay = scheduledMatches.get(day);
+                Map<String, String> matchesForDay = currentMonthMatches.get(day);
                 for (String time : matchesForDay.keySet()) {
                     matchInfo.append("Match contre ").append(matchesForDay.get(time)).append(" à ").append(time).append("\n");
                 }
@@ -133,12 +142,13 @@ public class MatchSchedulerUI extends JFrame {
         String matchTime = JOptionPane.showInputDialog("Entrez l'horaire du match (format HH:mm) :");
 
         if (team != null && !team.trim().isEmpty() && matchTime != null && !matchTime.trim().isEmpty()) {
-            // Vérifie si le créneau horaire est déjà pris
-            if (scheduledMatches.containsKey(day) && scheduledMatches.get(day).containsKey(matchTime)) {
+            // Vérifie si le créneau horaire est déjà pris pour ce jour
+            Map<Integer, Map<String, String>> currentMonthMatches = allScheduledMatches.get(currentMonth);
+            if (currentMonthMatches.containsKey(day) && currentMonthMatches.get(day).containsKey(matchTime)) {
                 JOptionPane.showMessageDialog(this, "Ce créneau horaire est déjà réservé. Choisissez un autre horaire.");
             } else {
                 // Ajoute le match au jour et à l'horaire
-                scheduledMatches.computeIfAbsent(day, k -> new HashMap<>()).put(matchTime, team);
+                currentMonthMatches.computeIfAbsent(day, k -> new HashMap<>()).put(matchTime, team);
                 updateCalendar();
             }
         }
@@ -154,10 +164,16 @@ public class MatchSchedulerUI extends JFrame {
             return;
         }
 
+        Map<Integer, Map<String, String>> currentMonthMatches = allScheduledMatches.get(currentMonth);
+        if (currentMonthMatches == null) {
+            currentMonthMatches = new HashMap<>();
+            allScheduledMatches.put(currentMonth, currentMonthMatches);
+        }
+
         for (int day = 1; day <= currentMonth.lengthOfMonth(); day++) {
-            if (!scheduledMatches.containsKey(day) || !scheduledMatches.get(day).containsKey(matchTime)) {
+            if (!currentMonthMatches.containsKey(day) || !currentMonthMatches.get(day).containsKey(matchTime)) {
                 // Ajoute le match pour le premier jour et l'horaire disponible
-                scheduledMatches.computeIfAbsent(day, k -> new HashMap<>()).put(matchTime, team);
+                currentMonthMatches.computeIfAbsent(day, k -> new HashMap<>()).put(matchTime, team);
                 JOptionPane.showMessageDialog(this, "Match programmé le " + day + " " + currentMonth.getMonth() + " à " + matchTime);
                 updateCalendar();
                 return;
@@ -170,7 +186,6 @@ public class MatchSchedulerUI extends JFrame {
     // Change le mois affiché
     private void changeMonth(int offset) {
         currentMonth = currentMonth.plusMonths(offset);
-        scheduledMatches.clear(); // Reset pour l'exemple
         updateCalendar();
     }
 
