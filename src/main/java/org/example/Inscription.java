@@ -4,6 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * Cette classe représente le formulaire d'inscription pour un utilisateur.
+ * Elle permet à l'utilisateur de créer un compte, de saisir ses informations personnelles,
+ * ainsi que les informations concernant son équipe et son stade.
+ */
 public class Inscription extends JPanel {
 
     // Champs de saisie pour l'inscription
@@ -19,8 +24,10 @@ public class Inscription extends JPanel {
     private Login loginFrame;
 
     /**
-     * Constructeur qui reçoit la référence de la fenêtre principale.
-     * @param loginFrame l'instance de Login
+     * Constructeur de la classe <code>Inscription</code>.
+     * Ce constructeur initialise le formulaire d'inscription et configure les composants graphiques.
+     *
+     * @param loginFrame L'instance de la fenêtre de connexion, utilisée pour revenir à l'écran de connexion en cas d'annulation.
      */
     public Inscription(Login loginFrame) {
         this.loginFrame = loginFrame;
@@ -132,7 +139,7 @@ public class Inscription extends JPanel {
                 if (success) {
                     JOptionPane.showMessageDialog(Inscription.this, "Inscription réussie !");
                     // Fermer la fenêtre d'inscription
-                    loginFrame.dispose();  // Ferme la fe  nêtre d'inscription
+                    loginFrame.dispose();  // Ferme la fenêtre d'inscription
                     // Ouvrir le MatchSchedulerUI
                     new MatchSchedulerUI(emailField.getText()).setVisible(true);  // Affiche la fenêtre de gestion des matchs
                 } else {
@@ -141,7 +148,6 @@ public class Inscription extends JPanel {
                 }
             }
         });
-
 
         // Action pour le bouton "Retour"
         backButton.addActionListener(new ActionListener() {

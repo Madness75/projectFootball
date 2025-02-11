@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="527da18e-54bc-4a59-a596-963a6148cf5c" name="Changes" comment="MatchSchedulerUI permet de reserver des matchs">
+    <list default="true" id="527da18e-54bc-4a59-a596-963a6148cf5c" name="Changes" comment="fix changement de mois">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Inscription.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Inscription.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MatchSchedulerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MatchSchedulerUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UtilisateurDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UtilisateurDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +56,7 @@
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.MatchSchedulerUI">
+  <component name="RunManager" selected="Application.Login">
     <configuration name="Inscription" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Inscription" />
       <module name="ProjetFootball" />
@@ -121,9 +124,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Login" />
         <item itemvalue="Application.MatchSchedulerUI" />
         <item itemvalue="Application.TeamManagementUI" />
-        <item itemvalue="Application.Login" />
         <item itemvalue="Application.MonInterface" />
         <item itemvalue="Application.Inscription" />
       </list>
@@ -202,7 +205,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739272305639</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="fix changement de mois">
+      <option name="closed" value="true" />
+      <created>1739279226511</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1739279226511</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -225,6 +236,7 @@
     <MESSAGE value="changement de Inscription.java pour prendre en compte le nom du stade et l'adresse du stade" />
     <MESSAGE value="Inscription.java et Login.java affiche MatchScheduler une fois réussis" />
     <MESSAGE value="MatchSchedulerUI permet de reserver des matchs" />
-    <option name="LAST_COMMIT_MESSAGE" value="MatchSchedulerUI permet de reserver des matchs" />
+    <MESSAGE value="fix changement de mois" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix changement de mois" />
   </component>
 </project>

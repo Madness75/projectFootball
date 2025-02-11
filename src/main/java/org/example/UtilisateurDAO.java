@@ -2,6 +2,9 @@ package org.example;
 
 import java.sql.*;
 
+/**
+ * Cette classe gère les interactions avec la base de données pour la table des utilisateurs, en effectuant des opérations telles que l'inscription, la connexion, et l'ajout d'une équipe avec son stade.
+ */
 public class UtilisateurDAO {
 
     // Paramètres de connexion pour la base de données football
@@ -64,6 +67,19 @@ public class UtilisateurDAO {
         return isValid;
     }
 
+    /**
+     * Inscrit un nouvel utilisateur en lui associant une équipe et un stade dans la base de données.
+     * Si l'équipe et/ou le stade n'existent pas, ils sont créés automatiquement.
+     *
+     * @param email l'adresse e-mail de l'utilisateur
+     * @param nom le nom de l'utilisateur
+     * @param prenom le prénom de l'utilisateur
+     * @param motdepasse le mot de passe de l'utilisateur
+     * @param equipeNom le nom de l'équipe associée à l'utilisateur
+     * @param stadeNom le nom du stade associé à l'équipe
+     * @param stadeAdresse l'adresse du stade
+     * @return true si l'inscription a réussi, false sinon
+     */
     public boolean inscrireUtilisateurAvecEquipeEtStade(String email, String nom, String prenom, String motdepasse, String equipeNom, String stadeNom, String stadeAdresse) {
         Connection con = null;
         PreparedStatement ps = null;
@@ -154,5 +170,4 @@ public class UtilisateurDAO {
 
         return isSuccess;
     }
-
 }

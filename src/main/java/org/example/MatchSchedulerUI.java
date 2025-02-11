@@ -8,6 +8,11 @@ import java.time.YearMonth;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * La classe <code>MatchSchedulerUI</code> représente l'interface utilisateur pour la gestion des matchs.
+ * Elle permet à l'utilisateur de planifier des matchs, de les afficher dans un calendrier mensuel,
+ * et de naviguer entre les mois.
+ */
 public class MatchSchedulerUI extends JFrame {
     private JLabel monthLabel;
     private JPanel calendarPanel;
@@ -17,7 +22,12 @@ public class MatchSchedulerUI extends JFrame {
     private static String currentUserEmail; // Stocke l'email de l'utilisateur actuel
     private static Map<YearMonth, Map<Integer, Map<String, String>>> allScheduledMatches; // Stocke les matchs de tous les mois
 
-    // Constructeur
+    /**
+     * Constructeur de la classe <code>MatchSchedulerUI</code>.
+     * Ce constructeur initialise l'interface graphique pour afficher le calendrier et les options de gestion des matchs.
+     *
+     * @param userEmail L'adresse e-mail de l'utilisateur connecté, utilisée pour associer les matchs à l'utilisateur.
+     */
     public MatchSchedulerUI(String userEmail) {
         currentUserEmail = userEmail; // Récupère l'email de l'utilisateur connecté
         setTitle("Gestion des matchs");
@@ -86,7 +96,10 @@ public class MatchSchedulerUI extends JFrame {
         updateCalendar();
     }
 
-    // Met à jour le calendrier avec le mois actuel
+    /**
+     * Met à jour le calendrier avec le mois actuel.
+     * Cette méthode affiche les jours du mois et les matchs programmés sur le calendrier.
+     */
     private void updateCalendar() {
         calendarPanel.removeAll();
         monthLabel.setText(currentMonth.getMonth().toString() + " " + currentMonth.getYear());
@@ -121,7 +134,7 @@ public class MatchSchedulerUI extends JFrame {
                 StringBuilder matchInfo = new StringBuilder();
                 Map<String, String> matchesForDay = currentMonthMatches.get(day);
                 for (String time : matchesForDay.keySet()) {
-                    matchInfo.append("Match contre ").append(matchesForDay.get(time)).append(" à ").append(time).append("\n");
+                    matchInfo.append(currentUserEmail ).append(" à un match contre ").append(matchesForDay.get(time)).append(" à ").append(time).append("\n");
                 }
                 dayButton.setText(day + " 🏆");
                 dayButton.setToolTipText(matchInfo.toString()); // Affiche les matchs de la journée
@@ -136,7 +149,13 @@ public class MatchSchedulerUI extends JFrame {
         calendarPanel.repaint();
     }
 
-    // Ajoute un match à un jour donné
+    /**
+     * Ajoute un match à un jour donné.
+     * Cette méthode demande à l'utilisateur de saisir le nom de l'équipe adverse et l'horaire du match,
+     * et vérifie si l'horaire est disponible pour ce jour.
+     *
+     * @param day Le jour du mois auquel ajouter le match.
+     */
     private void addMatchToDay(int day) {
         String team = JOptionPane.showInputDialog("Entrez le nom de l'équipe adverse :");
         String matchTime = JOptionPane.showInputDialog("Entrez l'horaire du match (format HH:mm) :");
@@ -154,7 +173,10 @@ public class MatchSchedulerUI extends JFrame {
         }
     }
 
-    // Planifie un match automatiquement (ex : premier jour disponible)
+    /**
+     * Planifie un match automatiquement (par exemple, pour le premier jour disponible).
+     * Si un match est déjà planifié pour une date et un horaire, un message d'erreur est affiché.
+     */
     private void scheduleMatch() {
         String team = teamInput.getText().trim();
         String matchTime = matchTimeInput.getText().trim();
@@ -183,12 +205,22 @@ public class MatchSchedulerUI extends JFrame {
         JOptionPane.showMessageDialog(this, "Aucune date disponible ce mois-ci !");
     }
 
-    // Change le mois affiché
+    /**
+     * Change le mois affiché dans le calendrier.
+     * Cette méthode permet de naviguer entre les mois en ajustant le mois courant.
+     *
+     * @param offset Le nombre de mois à ajouter ou soustraire (par exemple, -1 pour le mois précédent, +1 pour le mois suivant).
+     */
     private void changeMonth(int offset) {
         currentMonth = currentMonth.plusMonths(offset);
         updateCalendar();
     }
 
+    /**
+     * Méthode principale pour lancer l'application.
+     *
+     * @param args Arguments passés en ligne de commande (non utilisés ici).
+     */
     public static void main(String[] args) {
         // Utilisez une adresse e-mail d'utilisateur simulée pour ce test
         String userEmail = "user@example.com"; // Cette adresse peut être récupérée après l'inscription ou la connexion

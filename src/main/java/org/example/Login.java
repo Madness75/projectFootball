@@ -4,6 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * La classe <code>Login</code> représente la fenêtre de connexion de l'application.
+ * Elle permet à l'utilisateur de se connecter en entrant son adresse e-mail et son mot de passe,
+ * ou de naviguer vers le formulaire d'inscription.
+ */
 public class Login extends JFrame {
 
     // Champs de saisie pour la connexion
@@ -13,6 +18,10 @@ public class Login extends JFrame {
     // Panel principal qui contiendra soit le formulaire de connexion, soit celui d'inscription
     private JPanel contentPanel;
 
+    /**
+     * Constructeur de la classe <code>Login</code>.
+     * Il initialise la fenêtre de connexion et affiche immédiatement le formulaire de connexion.
+     */
     public Login() {
         setTitle("Page de Connexion");
         setSize(800*2, 450*2);
@@ -29,6 +38,8 @@ public class Login extends JFrame {
 
     /**
      * Affiche le formulaire de connexion.
+     * Ce formulaire permet à l'utilisateur de saisir son e-mail et son mot de passe pour se connecter.
+     * Il comprend également un lien vers le formulaire d'inscription.
      */
     public void showLoginPanel() {
         // Supprime le contenu actuel du panel principal
@@ -74,8 +85,7 @@ public class Login extends JFrame {
         registerLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         loginPanel.add(registerLabel, gbc);
 
-        // Action lors du clic sur le bouton "Valider" (exemple de vérification)
-        // Action lors du clic sur le bouton "Valider" ou après l'inscription réussie :
+        // Action lors du clic sur le bouton "Valider" ou après l'inscription réussie
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -118,7 +128,8 @@ public class Login extends JFrame {
     }
 
     /**
-     * Affiche le formulaire d'inscription provenant de la classe Inscription.
+     * Affiche le formulaire d'inscription provenant de la classe <code>Inscription</code>.
+     * Cette méthode permet de changer l'affichage de la fenêtre pour présenter le formulaire d'inscription.
      */
     public void showInscriptionPanel() {
         // Supprime le contenu actuel du panel principal
@@ -133,6 +144,12 @@ public class Login extends JFrame {
         contentPanel.repaint();
     }
 
+    /**
+     * Méthode main pour démarrer l'application.
+     * Cette méthode crée et affiche la fenêtre de connexion.
+     *
+     * @param args les arguments de la ligne de commande (non utilisés ici)
+     */
     public static void main(String[] args) {
         // Pour respecter la sécurité des threads Swing, on utilise invokeLater
         SwingUtilities.invokeLater(() -> {
