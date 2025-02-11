@@ -4,15 +4,26 @@ public class Joueur {
 
     private String nom;
     private String prenom;
-    private int numMaillot;
+    private Integer numMaillot;
     private Poste poste;
+    private int idEquipe;
 
 
-    public Joueur(String nom,String prenom , int numMaillot, Poste poste) {
+    public Joueur(String nom, String prenom, int numMaillot,  Poste poste, int idEquipe) {
         this.nom = nom;
+        this.prenom = prenom;
         this.poste = poste;
         this.numMaillot = numMaillot;
-        this.prenom = prenom;
+        this.idEquipe = idEquipe;
+    }
+
+
+    public int getIdEquipe() {
+        return idEquipe;
+    }
+
+    public void setIdEquipe(int idEquipe) {
+        this.idEquipe = idEquipe;
     }
 
     public String getNom() {
@@ -31,11 +42,11 @@ public class Joueur {
         this.prenom = prenom;
     }
 
-    public int getNumMaillot() {
+    public Integer getNumMaillot() {
         return numMaillot;
     }
 
-    public void setNumMaillot(int numMaillot) {
+    public void setNumMaillot(Integer numMaillot) {
         this.numMaillot = numMaillot;
     }
 

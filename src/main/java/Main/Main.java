@@ -9,7 +9,7 @@ public class Main {
 
         List<Joueur> lesJoueurs = new ArrayList<>();
 
-        lesJoueurs.add(new Joueur("Dupont", "Pierre", 10, new Poste(4)));
+        /*lesJoueurs.add(new Joueur("Dupont", "Pierre", 10, new Poste(4)));
         lesJoueurs.add(new Joueur("Lefevre", "Paul", 7, new Poste(4)));
         lesJoueurs.add(new Joueur("Martinez", "Carlos", 5, new Poste(2)));
         lesJoueurs.add(new Joueur("Nguyen", "Lan", 12, new Poste(3)));
@@ -109,7 +109,7 @@ public class Main {
         lesJoueurs.add(new Joueur("Martinez", "Luis", 7, new Poste(4)));
         lesJoueurs.add(new Joueur("Oliveira", "Pedro", 3, new Poste(2)));
         lesJoueurs.add(new Joueur("Guerra", "Ricardo", 4, new Poste(3)));
-        lesJoueurs.add(new Joueur("El Belaili", "Ismael", 10, new Poste(4)));
+        lesJoueurs.add(new Joueur("El Belaili", "Ismael", 10, new Poste(4)));*/
 
         for(Joueur j: lesJoueurs){
             connexionBDD.ajouterJoueur(j);
