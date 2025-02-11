@@ -75,6 +75,7 @@ public class Login extends JFrame {
         loginPanel.add(registerLabel, gbc);
 
         // Action lors du clic sur le bouton "Valider" (exemple de vérification)
+        // Action lors du clic sur le bouton "Valider" ou après l'inscription réussie :
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -88,7 +89,10 @@ public class Login extends JFrame {
 
                 if (isConnected) {
                     JOptionPane.showMessageDialog(Login.this, "Connexion réussie !");
-                    // Vous pouvez ensuite ouvrir la fenêtre principale de l'application
+                    // Fermer la fenêtre de connexion
+                    dispose();  // Ferme la fenêtre de connexion
+                    // Ouvrir le MatchSchedulerUI
+                    new MatchSchedulerUI().setVisible(true);  // Affiche la fenêtre de gestion des matchs
                 } else {
                     JOptionPane.showMessageDialog(Login.this, "Email ou mot de passe incorrect.",
                             "Erreur de connexion", JOptionPane.ERROR_MESSAGE);

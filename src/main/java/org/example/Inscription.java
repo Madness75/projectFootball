@@ -113,9 +113,9 @@ public class Inscription extends JPanel {
                 String email = emailField.getText();
                 String nom = nomField.getText();
                 String prenom = prenomField.getText();
-                String equipeNom = equipeField.getText();  // Récupération du nom de l'équipe
-                String stadeNom = stadeNomField.getText();  // Récupération du nom du stade
-                String stadeAdresse = stadeAdresseField.getText();  // Récupération de l'adresse du stade
+                String equipeNom = equipeField.getText();
+                String stadeNom = stadeNomField.getText();
+                String stadeAdresse = stadeAdresseField.getText();
                 String password = new String(passwordField.getPassword());
 
                 // Vérifie que tous les champs sont remplis
@@ -131,14 +131,17 @@ public class Inscription extends JPanel {
 
                 if (success) {
                     JOptionPane.showMessageDialog(Inscription.this, "Inscription réussie !");
-                    // Retour à la page de connexion après inscription
-                    loginFrame.showLoginPanel();
+                    // Fermer la fenêtre d'inscription
+                    loginFrame.dispose();  // Ferme la fe  nêtre d'inscription
+                    // Ouvrir le MatchSchedulerUI
+                    new MatchSchedulerUI().setVisible(true);  // Affiche la fenêtre de gestion des matchs
                 } else {
                     JOptionPane.showMessageDialog(Inscription.this, "Erreur lors de l'inscription.",
                             "Erreur d'inscription", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
+
 
         // Action pour le bouton "Retour"
         backButton.addActionListener(new ActionListener() {

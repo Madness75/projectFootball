@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="527da18e-54bc-4a59-a596-963a6148cf5c" name="Changes" comment="Surppime MonInterface.java et Change les noms des jours MatchSchedulerUI.java">
+    <list default="true" id="527da18e-54bc-4a59-a596-963a6148cf5c" name="Changes" comment="changement de Inscription.java pour prendre en compte le nom du stade et l'adresse du stade">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Inscription.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Inscription.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UtilisateurDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UtilisateurDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,8 +123,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Login" />
-        <item itemvalue="Application.MonInterface" />
         <item itemvalue="Application.MatchSchedulerUI" />
+        <item itemvalue="Application.MonInterface" />
         <item itemvalue="Application.Inscription" />
         <item itemvalue="Application.TeamManagementUI" />
       </list>
@@ -180,7 +179,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739267442728</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="changement de Inscription.java pour prendre en compte le nom du stade et l'adresse du stade">
+      <option name="closed" value="true" />
+      <created>1739269999239</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1739269999239</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -200,6 +207,7 @@
     <MESSAGE value="added login fonctionnel" />
     <MESSAGE value="Inscription et Login ensemble" />
     <MESSAGE value="Surppime MonInterface.java et Change les noms des jours MatchSchedulerUI.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Surppime MonInterface.java et Change les noms des jours MatchSchedulerUI.java" />
+    <MESSAGE value="changement de Inscription.java pour prendre en compte le nom du stade et l'adresse du stade" />
+    <option name="LAST_COMMIT_MESSAGE" value="changement de Inscription.java pour prendre en compte le nom du stade et l'adresse du stade" />
   </component>
 </project>
