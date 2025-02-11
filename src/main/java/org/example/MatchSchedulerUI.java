@@ -82,7 +82,7 @@ public class MatchSchedulerUI extends JFrame {
         calendarPanel.removeAll();
         monthLabel.setText(currentMonth.getMonth().toString() + " " + currentMonth.getYear());
 
-        String[] days = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+        String[] days = {"Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"};
         for (String day : days) {
             JLabel label = new JLabel(day, SwingConstants.CENTER);
             label.setFont(new Font("Arial", Font.BOLD, 12));
