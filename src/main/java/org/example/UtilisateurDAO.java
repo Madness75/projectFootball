@@ -64,33 +64,90 @@ public class UtilisateurDAO {
         return isValid;
     }
 
-    public boolean inscrireUtilisateur(String email, String nom, String prenom, String motdepasse) {
+    public boolean inscrireUtilisateurAvecEquipeEtStade(String email, String nom, String prenom, String motdepasse, String equipeNom, String stadeNom, String stadeAdresse) {
         Connection con = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         boolean isSuccess = false;
 
         try {
             // Connexion à la base de données
             con = DriverManager.getConnection(URL, LOGIN, PASS);
 
-            // Requête d'insertion pour ajouter l'utilisateur dans la base
-            String sql = "INSERT INTO Utilisateur (email, nom, prenom, motdepasse) VALUES (?, ?, ?, ?)";
-            ps = con.prepareStatement(sql);
+            // Vérifie si le stade existe déjà
+            String checkStadeSQL = "SELECT idStade FROM stade WHERE adresse = ? AND nom = ?";
+            ps = con.prepareStatement(checkStadeSQL);
+            ps.setString(1, stadeAdresse);
+            ps.setString(2, stadeNom);  // Vérifie également le nom du stade
+            rs = ps.executeQuery();
+
+            int stadeId;
+            if (rs.next()) {
+                // Si le stade existe, on récupère son id
+                stadeId = rs.getInt("idStade");
+            } else {
+                // Si le stade n'existe pas, on l'ajoute
+                String insertStadeSQL = "INSERT INTO stade (nom, adresse) VALUES (?, ?)";
+                ps = con.prepareStatement(insertStadeSQL, Statement.RETURN_GENERATED_KEYS);
+                ps.setString(1, stadeNom);  // On ajoute le nom du stade
+                ps.setString(2, stadeAdresse);
+                ps.executeUpdate();
+
+                // Récupère l'ID du stade nouvellement ajouté
+                rs = ps.getGeneratedKeys();
+                if (rs.next()) {
+                    stadeId = rs.getInt(1);
+                } else {
+                    // Si l'ajout échoue
+                    throw new SQLException("Échec de l'ajout du stade.");
+                }
+            }
+
+            // Vérifie si l'équipe existe déjà
+            String checkEquipeSQL = "SELECT idEquipe FROM equipe WHERE nom = ?";
+            ps = con.prepareStatement(checkEquipeSQL);
+            ps.setString(1, equipeNom);
+            rs = ps.executeQuery();
+
+            int equipeId;
+            if (rs.next()) {
+                // Si l'équipe existe, on récupère son id
+                equipeId = rs.getInt("idEquipe");
+            } else {
+                // Si l'équipe n'existe pas, on l'ajoute
+                String insertEquipeSQL = "INSERT INTO equipe (nom, stadeId) VALUES (?, ?)";
+                ps = con.prepareStatement(insertEquipeSQL, Statement.RETURN_GENERATED_KEYS);
+                ps.setString(1, equipeNom);
+                ps.setInt(2, stadeId);
+                ps.executeUpdate();
+
+                // Récupère l'ID de l'équipe nouvellement ajoutée
+                rs = ps.getGeneratedKeys();
+                if (rs.next()) {
+                    equipeId = rs.getInt(1);
+                } else {
+                    // Si l'ajout échoue
+                    throw new SQLException("Échec de l'ajout de l'équipe.");
+                }
+            }
+
+            // Insertion de l'utilisateur dans la base de données
+            String insertUserSQL = "INSERT INTO utilisateur (email, nom, prenom, motdepasse, equipeId) VALUES (?, ?, ?, ?, ?)";
+            ps = con.prepareStatement(insertUserSQL);
             ps.setString(1, email);
             ps.setString(2, nom);
             ps.setString(3, prenom);
             ps.setString(4, motdepasse);
+            ps.setInt(5, equipeId);
 
-            // Exécution de la requête
-            int result = ps.executeUpdate();
-
-            // Si l'insertion est réussie, result sera supérieur à 0
-            if (result > 0) {
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
                 isSuccess = true;
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+            try { if (rs != null) rs.close(); } catch (Exception e) { e.printStackTrace(); }
             try { if (ps != null) ps.close(); } catch (Exception e) { e.printStackTrace(); }
             try { if (con != null) con.close(); } catch (Exception e) { e.printStackTrace(); }
         }

@@ -10,6 +10,9 @@ public class Inscription extends JPanel {
     private JTextField emailField;
     private JTextField nomField;
     private JTextField prenomField;
+    private JTextField equipeField;  // Champ pour le nom de l'équipe
+    private JTextField stadeNomField;  // Champ pour le nom du stade
+    private JTextField stadeAdresseField;  // Champ pour l'adresse du stade
     private JPasswordField passwordField;
 
     // Référence à la fenêtre principale Login pour pouvoir y revenir
@@ -58,23 +61,47 @@ public class Inscription extends JPanel {
         prenomField = new JTextField(15);
         signupPanel.add(prenomField, gbc);
 
-        // Label et champ pour le mot de passe
+        // Champ pour le nom de l'équipe
         gbc.gridy = 6;
-        signupPanel.add(new JLabel("Mot de passe"), gbc);
+        signupPanel.add(new JLabel("Nom de l'équipe"), gbc);
 
         gbc.gridy = 7;
+        equipeField = new JTextField(15);
+        signupPanel.add(equipeField, gbc);
+
+        // Champ pour le nom du stade
+        gbc.gridy = 8;
+        signupPanel.add(new JLabel("Nom du stade"), gbc);
+
+        gbc.gridy = 9;
+        stadeNomField = new JTextField(15);
+        signupPanel.add(stadeNomField, gbc);
+
+        // Champ pour l'adresse du stade
+        gbc.gridy = 10;
+        signupPanel.add(new JLabel("Adresse du stade"), gbc);
+
+        gbc.gridy = 11;
+        stadeAdresseField = new JTextField(15);
+        signupPanel.add(stadeAdresseField, gbc);
+
+        // Label et champ pour le mot de passe
+        gbc.gridy = 12;
+        signupPanel.add(new JLabel("Mot de passe"), gbc);
+
+        gbc.gridy = 13;
         passwordField = new JPasswordField(15);
         signupPanel.add(passwordField, gbc);
 
         // Bouton pour s'inscrire
-        gbc.gridy = 8;
+        gbc.gridy = 14;
         JButton signupButton = new JButton("S'inscrire");
         signupButton.setBackground(new Color(50, 120, 220));
         signupButton.setForeground(Color.WHITE);
         signupPanel.add(signupButton, gbc);
 
         // Bouton pour revenir à la page de connexion
-        gbc.gridy = 9;
+        gbc.gridy = 15;
         JButton backButton = new JButton("Retour");
         signupPanel.add(backButton, gbc);
 
@@ -86,18 +113,21 @@ public class Inscription extends JPanel {
                 String email = emailField.getText();
                 String nom = nomField.getText();
                 String prenom = prenomField.getText();
+                String equipeNom = equipeField.getText();  // Récupération du nom de l'équipe
+                String stadeNom = stadeNomField.getText();  // Récupération du nom du stade
+                String stadeAdresse = stadeAdresseField.getText();  // Récupération de l'adresse du stade
                 String password = new String(passwordField.getPassword());
 
                 // Vérifie que tous les champs sont remplis
-                if (email.isEmpty() || nom.isEmpty() || prenom.isEmpty() || password.isEmpty()) {
+                if (email.isEmpty() || nom.isEmpty() || prenom.isEmpty() || equipeNom.isEmpty() || stadeNom.isEmpty() || stadeAdresse.isEmpty() || password.isEmpty()) {
                     JOptionPane.showMessageDialog(Inscription.this, "Tous les champs sont obligatoires.",
                             "Erreur d'inscription", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
-                // Appel du DAO pour enregistrer l'utilisateur
+                // Appel du DAO pour enregistrer l'utilisateur et l'équipe avec le stade
                 UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
-                boolean success = utilisateurDAO.inscrireUtilisateur(email, nom, prenom, password);
+                boolean success = utilisateurDAO.inscrireUtilisateurAvecEquipeEtStade(email, nom, prenom, password, equipeNom, stadeNom, stadeAdresse);
 
                 if (success) {
                     JOptionPane.showMessageDialog(Inscription.this, "Inscription réussie !");

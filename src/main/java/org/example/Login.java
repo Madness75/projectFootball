@@ -15,7 +15,7 @@ public class Login extends JFrame {
 
     public Login() {
         setTitle("Page de Connexion");
-        setSize(800, 450);
+        setSize(800*2, 450*2);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
