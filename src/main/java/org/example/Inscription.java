@@ -134,7 +134,7 @@ public class Inscription extends JPanel {
                     // Fermer la fenêtre d'inscription
                     loginFrame.dispose();  // Ferme la fe  nêtre d'inscription
                     // Ouvrir le MatchSchedulerUI
-                    new MatchSchedulerUI().setVisible(true);  // Affiche la fenêtre de gestion des matchs
+                    new MatchSchedulerUI(emailField.getText()).setVisible(true);  // Affiche la fenêtre de gestion des matchs
                 } else {
                     JOptionPane.showMessageDialog(Inscription.this, "Erreur lors de l'inscription.",
                             "Erreur d'inscription", JOptionPane.ERROR_MESSAGE);

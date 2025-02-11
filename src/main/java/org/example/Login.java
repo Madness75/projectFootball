@@ -92,7 +92,7 @@ public class Login extends JFrame {
                     // Fermer la fenêtre de connexion
                     dispose();  // Ferme la fenêtre de connexion
                     // Ouvrir le MatchSchedulerUI
-                    new MatchSchedulerUI().setVisible(true);  // Affiche la fenêtre de gestion des matchs
+                    new MatchSchedulerUI(emailField.getText()).setVisible(true);  // Affiche la fenêtre de gestion des matchs
                 } else {
                     JOptionPane.showMessageDialog(Login.this, "Email ou mot de passe incorrect.",
                             "Erreur de connexion", JOptionPane.ERROR_MESSAGE);

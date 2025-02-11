@@ -2,8 +2,7 @@ package org.example;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.HashMap;
@@ -13,10 +12,14 @@ public class MatchSchedulerUI extends JFrame {
     private JLabel monthLabel;
     private JPanel calendarPanel;
     private JTextField teamInput;
+    private JTextField matchTimeInput;
     private YearMonth currentMonth;
-    private Map<Integer, String> scheduledMatches; // Stocke les matchs programmés (jour -> match info)
+    private Map<Integer, Map<String, String>> scheduledMatches; // Stocke les matchs programmés (jour -> {horaire -> match info})
+    private static String currentUserEmail; // Stocke l'email de l'utilisateur actuel
 
-    public MatchSchedulerUI() {
+    // Constructeur
+    public MatchSchedulerUI(String userEmail) {
+        currentUserEmail = userEmail; // Récupère l'email de l'utilisateur connecté
         setTitle("Gestion des matchs");
         setSize(850, 550);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -26,33 +29,37 @@ public class MatchSchedulerUI extends JFrame {
         currentMonth = YearMonth.now();
         scheduledMatches = new HashMap<>();
 
-        // ======= Titre =======
+        // Titre de la fenêtre
         JLabel titleLabel = new JLabel("Gestion des matchs", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
         add(titleLabel, BorderLayout.NORTH);
 
-        // ======= Conteneur principal =======
+        // Conteneur principal
         JPanel mainPanel = new JPanel(new BorderLayout());
         add(mainPanel, BorderLayout.CENTER);
 
-        // ======= Panneau de création de match =======
+        // Panneau de création de match
         JPanel leftPanel = new JPanel();
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
-        leftPanel.setBorder(BorderFactory.createTitledBorder("Créer un match automatiquement"));
+        leftPanel.setBorder(BorderFactory.createTitledBorder("Créer un match"));
         leftPanel.setPreferredSize(new Dimension(250, 150));
 
         leftPanel.add(new JLabel("Équipe opposée :"));
         teamInput = new JTextField(15);
         leftPanel.add(teamInput);
 
-        JButton scheduleButton = new JButton("Calculer un horaire");
+        leftPanel.add(new JLabel("Horaire du match (format HH:mm) :"));
+        matchTimeInput = new JTextField(5);
+        leftPanel.add(matchTimeInput);
+
+        JButton scheduleButton = new JButton("Planifier le match");
         leftPanel.add(scheduleButton);
 
         scheduleButton.addActionListener(e -> scheduleMatch());
 
         mainPanel.add(leftPanel, BorderLayout.WEST);
 
-        // ======= Panneau du calendrier =======
+        // Panneau du calendrier
         JPanel calendarContainer = new JPanel(new BorderLayout());
         mainPanel.add(calendarContainer, BorderLayout.CENTER);
 
@@ -77,12 +84,12 @@ public class MatchSchedulerUI extends JFrame {
         updateCalendar();
     }
 
-    // ======= Met à jour le calendrier avec le mois actuel =======
+    // Met à jour le calendrier avec le mois actuel
     private void updateCalendar() {
         calendarPanel.removeAll();
         monthLabel.setText(currentMonth.getMonth().toString() + " " + currentMonth.getYear());
 
-        String[] days = {"Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"};
+        String[] days = {"Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"};
         for (String day : days) {
             JLabel label = new JLabel(day, SwingConstants.CENTER);
             label.setFont(new Font("Arial", Font.BOLD, 12));
@@ -100,9 +107,15 @@ public class MatchSchedulerUI extends JFrame {
             JButton dayButton = new JButton(String.valueOf(day));
             int finalDay = day;
 
+            // Afficher les informations sur les matchs déjà programmés
             if (scheduledMatches.containsKey(day)) {
+                StringBuilder matchInfo = new StringBuilder();
+                Map<String, String> matchesForDay = scheduledMatches.get(day);
+                for (String time : matchesForDay.keySet()) {
+                    matchInfo.append("Match contre ").append(matchesForDay.get(time)).append(" à ").append(time).append("\n");
+                }
                 dayButton.setText(day + " 🏆");
-                dayButton.setToolTipText(scheduledMatches.get(day));
+                dayButton.setToolTipText(matchInfo.toString()); // Affiche les matchs de la journée
             }
 
             dayButton.addActionListener(e -> addMatchToDay(finalDay));
@@ -114,27 +127,38 @@ public class MatchSchedulerUI extends JFrame {
         calendarPanel.repaint();
     }
 
-    // ======= Ajoute un match à un jour donné =======
+    // Ajoute un match à un jour donné
     private void addMatchToDay(int day) {
         String team = JOptionPane.showInputDialog("Entrez le nom de l'équipe adverse :");
-        if (team != null && !team.trim().isEmpty()) {
-            scheduledMatches.put(day, "Match contre " + team + " à 15:00");
-            updateCalendar();
+        String matchTime = JOptionPane.showInputDialog("Entrez l'horaire du match (format HH:mm) :");
+
+        if (team != null && !team.trim().isEmpty() && matchTime != null && !matchTime.trim().isEmpty()) {
+            // Vérifie si le créneau horaire est déjà pris
+            if (scheduledMatches.containsKey(day) && scheduledMatches.get(day).containsKey(matchTime)) {
+                JOptionPane.showMessageDialog(this, "Ce créneau horaire est déjà réservé. Choisissez un autre horaire.");
+            } else {
+                // Ajoute le match au jour et à l'horaire
+                scheduledMatches.computeIfAbsent(day, k -> new HashMap<>()).put(matchTime, team);
+                updateCalendar();
+            }
         }
     }
 
-    // ======= Planifie un match automatiquement (ex : premier jour disponible) =======
+    // Planifie un match automatiquement (ex : premier jour disponible)
     private void scheduleMatch() {
         String team = teamInput.getText().trim();
-        if (team.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Veuillez entrer un nom d'équipe.");
+        String matchTime = matchTimeInput.getText().trim();
+
+        if (team.isEmpty() || matchTime.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Veuillez entrer un nom d'équipe et un horaire.");
             return;
         }
 
         for (int day = 1; day <= currentMonth.lengthOfMonth(); day++) {
-            if (!scheduledMatches.containsKey(day)) {
-                scheduledMatches.put(day, "Match contre " + team + " à 15:00");
-                JOptionPane.showMessageDialog(this, "Match programmé le " + day + " " + currentMonth.getMonth());
+            if (!scheduledMatches.containsKey(day) || !scheduledMatches.get(day).containsKey(matchTime)) {
+                // Ajoute le match pour le premier jour et l'horaire disponible
+                scheduledMatches.computeIfAbsent(day, k -> new HashMap<>()).put(matchTime, team);
+                JOptionPane.showMessageDialog(this, "Match programmé le " + day + " " + currentMonth.getMonth() + " à " + matchTime);
                 updateCalendar();
                 return;
             }
@@ -143,7 +167,7 @@ public class MatchSchedulerUI extends JFrame {
         JOptionPane.showMessageDialog(this, "Aucune date disponible ce mois-ci !");
     }
 
-    // ======= Change le mois affiché =======
+    // Change le mois affiché
     private void changeMonth(int offset) {
         currentMonth = currentMonth.plusMonths(offset);
         scheduledMatches.clear(); // Reset pour l'exemple
@@ -151,6 +175,8 @@ public class MatchSchedulerUI extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new MatchSchedulerUI().setVisible(true));
+        // Utilisez une adresse e-mail d'utilisateur simulée pour ce test
+        String userEmail = "user@example.com"; // Cette adresse peut être récupérée après l'inscription ou la connexion
+        SwingUtilities.invokeLater(() -> new MatchSchedulerUI(userEmail).setVisible(true));
     }
 }
