@@ -3,44 +3,48 @@ package org.example;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.sql.*; // Bien que non utilisé directement ici, il est utile pour la connexion dans le DAO
 
 public class Login extends JFrame {
 
-    // On déclare ici les champs de saisie pour pouvoir y accéder dans l'action du bouton
+    // Champs de saisie pour la connexion
     private JTextField emailField;
     private JPasswordField passwordField;
+
+    // Panel principal qui contiendra soit le formulaire de connexion, soit celui d'inscription
+    private JPanel contentPanel;
 
     public Login() {
         setTitle("Page de Connexion");
         setSize(800, 450);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setLayout(new BorderLayout());
 
-        // Couleur de fond de l'application
-        Color backgroundColor = new Color(220, 225, 230);
-        getContentPane().setBackground(backgroundColor);
+        // Création du panel principal avec un BorderLayout
+        contentPanel = new JPanel(new BorderLayout());
+        setContentPane(contentPanel);
 
-        // Panel principal pour l'organisation des composants
-        JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new BorderLayout());
-        mainPanel.setBackground(backgroundColor);
-        add(mainPanel, BorderLayout.CENTER);
+        // Affiche le formulaire de connexion dès le démarrage
+        showLoginPanel();
+    }
 
-        // Panel contenant le formulaire de connexion
-        JPanel loginPanel = new JPanel();
-        loginPanel.setLayout(new GridBagLayout());
-        loginPanel.setPreferredSize(new Dimension(250, 180));
+    /**
+     * Affiche le formulaire de connexion.
+     */
+    public void showLoginPanel() {
+        // Supprime le contenu actuel du panel principal
+        contentPanel.removeAll();
+
+        // Création du panel de connexion
+        JPanel loginPanel = new JPanel(new GridBagLayout());
         loginPanel.setBorder(BorderFactory.createTitledBorder("Connexion"));
         loginPanel.setBackground(Color.WHITE);
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
         gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 0;  // On reste sur la première colonne
 
         // Label et champ pour l'adresse e-mail
-        gbc.gridx = 0;
         gbc.gridy = 0;
         loginPanel.add(new JLabel("Adresse e-mail"), gbc);
 
@@ -56,65 +60,73 @@ public class Login extends JFrame {
         passwordField = new JPasswordField(15);
         loginPanel.add(passwordField, gbc);
 
-        // Bouton de validation
+        // Bouton de validation de connexion
         gbc.gridy = 4;
         JButton loginButton = new JButton("Valider");
         loginButton.setBackground(new Color(50, 120, 220));
         loginButton.setForeground(Color.WHITE);
         loginPanel.add(loginButton, gbc);
 
-        // Lien "Vous enregistrer ?"
+        // Lien "Vous enregistrer ?" pour accéder au formulaire d'inscription
         gbc.gridy = 5;
         JLabel registerLabel = new JLabel("<html><a href='#'>Vous enregistrer ?</a></html>");
         registerLabel.setForeground(Color.BLUE);
-        registerLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        registerLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         loginPanel.add(registerLabel, gbc);
 
-        // Action lorsqu'on clique sur "Vous enregistrer ?"
-        registerLabel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                JOptionPane.showMessageDialog(Login.this, "Redirection vers l'inscription...");
-                // Vous pouvez ici ouvrir une autre fenêtre d'inscription
-            }
-        });
-
-        // Ajout du formulaire centré dans le panel principal
-        mainPanel.add(loginPanel, BorderLayout.CENTER);
-
-        // Ajout d'icônes à gauche et à droite (les images sont des placeholders)
-        JLabel leftImage = new JLabel(new ImageIcon("image_placeholder.png"));
-        JLabel rightImage = new JLabel(new ImageIcon("image_placeholder.png"));
-        leftImage.setHorizontalAlignment(JLabel.CENTER);
-        rightImage.setHorizontalAlignment(JLabel.CENTER);
-        mainPanel.add(leftImage, BorderLayout.WEST);
-        mainPanel.add(rightImage, BorderLayout.EAST);
-
-        // Ajout de l'action sur le bouton de validation pour vérifier les identifiants
+        // Action lors du clic sur le bouton "Valider" (exemple de vérification)
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Récupération des données saisies
                 String email = emailField.getText();
-                // Convertir le tableau de char en String pour le mot de passe
                 String password = new String(passwordField.getPassword());
 
-                // Création d'une instance du DAO pour vérifier les identifiants
+                // Vérification de la connexion à l'aide du DAO
                 UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
                 boolean isConnected = utilisateurDAO.checkLogin(email, password);
 
-                // Vérification du résultat
                 if (isConnected) {
                     JOptionPane.showMessageDialog(Login.this, "Connexion réussie !");
-                    // Vous pouvez ici ouvrir la fenêtre principale de l'application
-                    // Exemple : new MainFrame().setVisible(true);
-                    // Puis fermer la fenêtre de connexion : Login.this.dispose();
+                    // Vous pouvez ensuite ouvrir la fenêtre principale de l'application
                 } else {
                     JOptionPane.showMessageDialog(Login.this, "Email ou mot de passe incorrect.",
                             "Erreur de connexion", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
+
+        // Action lors du clic sur le lien "Vous enregistrer ?"
+        registerLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // Appelle la méthode pour afficher le panel d'inscription
+                showInscriptionPanel();
+            }
+        });
+
+        // Ajoute le panel de connexion dans le panel principal
+        contentPanel.add(loginPanel, BorderLayout.CENTER);
+
+        // Met à jour la fenêtre
+        contentPanel.revalidate();
+        contentPanel.repaint();
+    }
+
+    /**
+     * Affiche le formulaire d'inscription provenant de la classe Inscription.
+     */
+    public void showInscriptionPanel() {
+        // Supprime le contenu actuel du panel principal
+        contentPanel.removeAll();
+
+        // Crée une instance du panel d'inscription en lui passant la référence de cette fenêtre
+        Inscription inscriptionPanel = new Inscription(this);
+        contentPanel.add(inscriptionPanel, BorderLayout.CENTER);
+
+        // Met à jour la fenêtre
+        contentPanel.revalidate();
+        contentPanel.repaint();
     }
 
     public static void main(String[] args) {

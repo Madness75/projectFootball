@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="527da18e-54bc-4a59-a596-963a6148cf5c" name="Changes" comment="added login fonctionnel">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Inscription.java" afterDir="false" />
+    <list default="true" id="527da18e-54bc-4a59-a596-963a6148cf5c" name="Changes" comment="added Inscription">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UtilisateurDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UtilisateurDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Inscription.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Inscription.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Login.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +40,7 @@
     "Application.Inscription.executor": "Run",
     "Application.Login.executor": "Run",
     "Application.Main.executor": "Run",
+    "Application.MatchSchedulerUI.executor": "Run",
     "Application.MonInterface.executor": "Run",
     "Application.TeamManagementUI.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -54,7 +54,7 @@
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.Inscription">
+  <component name="RunManager" selected="Application.Login">
     <configuration name="Inscription" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Inscription" />
       <module name="ProjetFootball" />
@@ -81,6 +81,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MatchSchedulerUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.MatchSchedulerUI" />
+      <module name="ProjetFootball" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MonInterface" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.MonInterface" />
+      <module name="ProjetFootball" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TeamManagementUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.TeamManagementUI" />
       <module name="ProjetFootball" />
@@ -96,9 +122,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Login" />
+        <item itemvalue="Application.MonInterface" />
+        <item itemvalue="Application.MatchSchedulerUI" />
         <item itemvalue="Application.Inscription" />
         <item itemvalue="Application.TeamManagementUI" />
-        <item itemvalue="Application.Login" />
       </list>
     </recent_temporary>
   </component>
