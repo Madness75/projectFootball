@@ -23,7 +23,7 @@ Une fois installé, démarre WampServer.
 
     Ouvre ton navigateur web et tape localhost dans la barre d'adresse.
     Clique sur phpMyAdmin.
-    Dans la colonne de gauche, clique sur Nouvelle base de données pour en créer une nouvelle.
+    Dans la colonne de gauche, clique sur Nouvelle base de données pour en créer une nouvelle et la nommer "football".
     Ensuite, clique sur l'onglet Importer.
     Sélectionne le fichier .sql qui se trouve dans la partie Release du dépôt GitHub.
     Clique sur Exécuter pour importer la base de données.
