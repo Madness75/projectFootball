@@ -28,6 +28,10 @@ Une fois installé, démarre WampServer.
     Sélectionne le fichier .sql qui se trouve dans la partie Release du dépôt GitHub.
     Clique sur Exécuter pour importer la base de données.
 
-4. Profite du projet 🎉
+4. Ajouter la librairie suivante au projet : 
+
+mysql-connector-j-8.0.31.jar : https://repo1.maven.org/maven2/com/mysql/mysql-connector-j/8.0.31/mysql-connector-j-8.0.31.jar
+
+5. Profite du projet 🎉
 
 Une fois l'installation terminée, tu peux commencer à utiliser le projet ! N'oublie pas de vérifier les autres instructions dans le repo pour toute information complémentaire.
