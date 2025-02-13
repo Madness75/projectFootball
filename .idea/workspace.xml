@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="527da18e-54bc-4a59-a596-963a6148cf5c" name="Changes" comment="fix changement de mois">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/MainUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/ConnexionBDD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ConnexionBDD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Joueur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TeamManagementUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/TeamManagementUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,26 +34,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Inscription.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Login.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MatchSchedulerUI.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MonInterface.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TeamManagementUI.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/e2404519/Downloads/mysql-connector-j-8.0.31.jar&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;U:/agile_methodology/ProjetFootball/src/main/java/org/example/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Inscription.executor": "Run",
+    "Application.Login.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.MainUI.executor": "Run",
+    "Application.MatchSchedulerUI.executor": "Run",
+    "Application.MonInterface.executor": "Run",
+    "Application.TeamManagementUI.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/e2404519/Downloads/mysql-connector-j-8.0.31.jar",
+    "onboarding.tips.debug.path": "U:/agile_methodology/ProjetFootball/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
-  <component name="RunManager" selected="Application.MainUI">
+}]]></component>
+  <component name="RunManager" selected="Application.TeamManagementUI">
     <configuration name="Login" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Login" />
       <module name="ProjetFootball" />
@@ -125,10 +122,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainUI" />
+        <item itemvalue="Application.TeamManagementUI" />
         <item itemvalue="Application.Login" />
         <item itemvalue="Application.MatchSchedulerUI" />
-        <item itemvalue="Application.TeamManagementUI" />
+        <item itemvalue="Application.MainUI" />
         <item itemvalue="Application.MonInterface" />
       </list>
     </recent_temporary>

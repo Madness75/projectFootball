@@ -136,7 +136,7 @@ public class ConnexionBDD {
             conn = getConnection();
 
             // La requête pour supprimer un joueur en fonction de nom, prénom et numéro de maillot
-            String sql = "DELETE FROM joueurs WHERE nom = ? AND prenom = ? AND num_maillot = ?";
+            String sql = "DELETE FROM joueurs WHERE Nom = ? AND Prenom = ? AND NumMaillot = ?";
             stmt = conn.prepareStatement(sql);
 
             // Remplir les paramètres de la requête
