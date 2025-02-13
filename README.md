@@ -1,6 +1,6 @@
 # Project Football ⚽️
 
-Bienvenue dans le projet Football ! Ce projet a pour but de [préciser l'objectif du projet ici, par exemple : créer un site de gestion de football, etc.].
+Bienvenue dans le projet Football ! Ce projet a été réalisé pour le cours de méthode Agile au second semetre du master IM de l'université de Haute-Alsace.
 
 ## Installation 🔧
 
